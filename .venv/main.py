@@ -1,10 +1,11 @@
 import openai
-from pptx import Presentation
 import json
 import regex
 import webbrowser
 import os
 import pathlib
+
+noCours = 1
 
 
 def getEnonceExos(response, n):
@@ -34,12 +35,12 @@ def getEnonceExos(response, n):
     html = ""
     # Accédez à l'élément 'content'
     for element in exercicesJson['exercices']:
-        html = html + GenerateHTML(n, element)
+        html = html + GenerateHTML(element)
         
-    openFile(html, n)
+    openFile(html, "Cours n°"+str(noCours)+"-Série n°"+str(n)+"-Exercices")
     
-def openFile(html, n):
-    filePath = str(pathlib.Path().resolve())+'\Serie'+str(n)+'exos.html'
+def openFile(html, fileName):
+    filePath = str(pathlib.Path().resolve())+'\\Exos\\'+str(fileName+".html")
     print("'\033[91m'", filePath, "'\033[0m'")
     path = os.path.abspath(filePath)
     url = 'file://' + path
@@ -48,15 +49,15 @@ def openFile(html, n):
         f.write(html)
     webbrowser.open(url)
     
-def GenerateHTML(n, element):
-    html = '<h3>Exercice: '+str(element['numero'])+'('+str(element['difficulte'])+')</h3>'
+def GenerateHTML(element):
+    html = '<h3>Exercice: '+str(element['numero'])+'</h3><h4> ('+str(element['difficulte'])+')</h4>'
     html = html + '<p>'+str(element['question'])+'</p>'
     return html
     
 
 n = 3
 # # Load your API key from an environment variable or secret management service
-openai.api_key = "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"
+openai.api_key = "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"
 print("'\033[91m'", "Envoie de la demande à l'assistant ...", "'\033[0m'")
 response = openai.ChatCompletion.create(
     model="gpt-4",
