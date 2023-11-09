@@ -1,0 +1,107 @@
+Corrections exercises
+
+Exercice: 1
+Qu'est-ce qu'une variable en Python ?
+
+Une variable en Python est un espace de mémoire dans lequel on peut stocker une valeur ou une référence à une valeur.
+
+
+Exercice: 2
+Quelles sont les types de variables disponibles en Python ?
+
+En Python, il existe plusieurs types de variables, tels que les entiers (int), les nombres à virgule flottante (float), les chaînes de caractères (str), les booléens (bool) et les listes (list).
+
+
+Exercice: 3
+Qu'est-ce qu'une condition en Python ?
+
+Une condition en Python permet d'exécuter un bloc de code uniquement si une certaine condition est vraie. On peut utiliser des instructions conditionnelles comme 'if', 'elif' et 'else' pour contrôler le flux d'exécution d'un programme.
+
+
+Exercice: 4
+x = 5
+y = 3
+print(x + y)
+
+Le code affiche 8.
+
+
+Exercice: 5
+x = 10
+y = '20'
+print(x + y)
+
+Le code génère une erreur, car on ne peut pas ajouter un entier et une chaîne de caractères en Python.
+
+
+Exercice: 6
+x = 7
+if x > 5:
+    print('x est supérieur à 5')
+else:
+    print('x est inférieur ou égal à 5')
+
+Le code affiche 'x est supérieur à 5'.
+
+
+Exercice: 7
+Écrivez un programme Python qui demande à l'utilisateur son nom et affiche un message de bienvenue avec ce nom.
+
+name = input('Quel est votre nom ? ')
+print('Bienvenue,', name)
+
+
+Exercice: 8
+Écrivez un programme Python qui demande à l'utilisateur de saisir deux nombres et affiche leur somme.
+
+num1 = float(input('Entrez le premier nombre : '))
+num2 = float(input('Entrez le deuxième nombre : '))
+sum = num1 + num2
+print('La somme est :', sum)
+
+
+Exercice: 9
+Écrivez un programme Python qui demande à l'utilisateur de saisir une valeur et vérifie si elle est positive, négative ou nulle.
+
+num = float(input('Entrez une valeur : '))
+if num > 0:
+    print('La valeur est positive')
+elif num < 0:
+    print('La valeur est négative')
+else:
+    print('La valeur est nulle')
+
+
+Exercice: 10
+Écrivez un programme Python qui trouve le plus grand parmi trois nombres saisis par l'utilisateur.
+
+num1 = float(input('Entrez le premier nombre : '))
+num2 = float(input('Entrez le deuxième nombre : '))
+num3 = float(input('Entrez le troisième nombre : '))
+
+if num1 >= num2 and num1 >= num3:
+    largest = num1
+elif num2 >= num1 and num2 >= num3:
+    largest = num2
+else:
+    largest = num3
+
+print('Le plus grand nombre est :', largest)
+
+
+Exercice: 11
+Écrivez un programme Python qui calcule et affiche les N premiers termes de la suite de Fibonacci.
+
+def fibonacci(n):
+    fib_list = []
+    a, b = 0, 1
+    while len(fib_list) < n:
+        fib_list.append(a)
+        a, b = b, a + b
+    return fib_list
+
+N = int(input('Entrez le nombre de termes : '))
+result = fibonacci(N)
+print('Les', N, 'premiers termes de la suite de Fibonacci :', result)
+
+
