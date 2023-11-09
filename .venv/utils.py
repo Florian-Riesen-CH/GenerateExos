@@ -15,6 +15,7 @@ def remove_newlines_not_inside_quotes(json_string):
             continue
         if char == "\\n" and not in_quotes:
             continue
+        
         # Sinon, on ajoute le caractère au résultat
         json_result += char
 

@@ -18,7 +18,7 @@ messageIntroduction = "Bonjour,\n\nComme annoncé lors du dernier cours.\nVoici 
 
 def requestChatGPT():
     # # Load your API key from an environment variable or secret management service
-    openai.api_key = "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"
+    openai.api_key = "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"
     print("'\033[92m'", "Envoie de la demande à l'assistant ...", "'\033[0m'")
     response = openai.ChatCompletion.create(
         model=gptModel,
@@ -29,6 +29,7 @@ def requestChatGPT():
             {"role": "system", "content": "Please avoid exercice who need loop or list to answerd"},
             {"role": "assistant", "content":"Python use indentation and not ';' to determine end of line"}, 
             {"role": "assistant", "content": "Difficulty has to be a number from 1 to 5"},
+            {"role": "assistant", "content": "Number has to be a the number of the exercise"},
             {"role": "user", "content": "Can you generate 3 tehorical exercises, 3 \"What print this code\", 5 practical exercises in french ? Difficulty should increase on each category"}
         ], 
         n=nbSerie
@@ -59,7 +60,8 @@ def getEnonceExos(response, no):
         pattern = regex.compile(r'\{(?:[^{}]|(?R))*\}')
         exercisesDecode = pattern.findall(str(content).replace('```',''))[0]
         print("'\033[92m'", "Display exos", "'\033[0m'")
-        exercisesJson = json.loads(str(exercisesDecode))
+        stringexercisesDecode:str = str(exercisesDecode).replace('\\\'','\\\\\'')
+        exercisesJson = json.loads(stringexercisesDecode)
     except  json.decoder.JSONDecodeError as e:
         print("'\033[91m'", "Error happend ", e.msg, "'\033[0m'")
         print("'\033[91m'", str(content), "'\033[0m'")
@@ -70,7 +72,7 @@ def getEnonceExos(response, no):
     # Accédez à l'élément 'content'
     
     GenerateHTML(exercisesJson, no)  
-    GenerateCorrectedTxt(exercisesJson, "Série n°"+str(nbSerie)+"-Corrigés")
+    GenerateCorrectedTxt(exercisesJson, "Série n°"+str(no)+"-Corrigés")
     
 def GenerateHTML(exercisesJson, serieNo):
     html = '<a>'+messageIntroduction.replace('\n', '<br>')+'</a>'
@@ -111,7 +113,7 @@ def sendEmails():
         exerciceNo = random.randint(0, nbSerie-1)
         mappingExosWithMail[i] = exerciceNo
         # Ouvrir le fichier en mode lecture
-        with open(exoFolderPath+"\\Cours n°"+str(noCours)+"\\Série n°"+str(exerciceNo)+"-exercises.html", 'r') as fichier:
+        with open(exoFolderPath+"\\Cours n°"+str(noCours)+"\\Série n°"+str(exerciceNo)+"-exercices.html", 'r') as fichier:
             # Lire tout le contenu du fichier
             contenu = fichier.read()
             # Afficher le contenu lu

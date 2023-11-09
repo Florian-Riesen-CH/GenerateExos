@@ -1,0 +1,84 @@
+Corrections exercises
+
+Exercice: 1
+Qu'est-ce qu'une variable en programmation ?
+
+Une variable en programmation est un espace de mémoire utilisé pour stocker une valeur. Elle permet de manipuler et de représenter des données dans un programme.
+
+
+Exercice: 2
+Quels sont les types de données les plus courants en Python ?
+
+Les types de données les plus courants en Python sont les entiers (int), les nombres à virgule flottante (float), les chaînes de caractères (str) et les booléens (bool).
+
+
+Exercice: 3
+Quels sont les opérateurs de comparaison en Python ?
+
+Les opérateurs de comparaison en Python sont : égalité (==), différence (!=), inférieur (<), supérieur (>), inférieur ou égal (<=), supérieur ou égal (>=). Ils permettent de comparer des valeurs et de retourner un booléen (True ou False) en fonction du résultat de la comparaison.
+
+
+Exercice: 4
+Que va afficher le code suivant ?
+
+x = 5
+y = 2
+print(x + y)
+
+7
+
+
+Exercice: 5
+Que va afficher le code suivant ?
+
+x = "Bonjour"
+y = "monde"
+print(x + " " + y)
+
+Bonjour monde
+
+
+Exercice: 6
+Que va afficher le code suivant ?
+
+x = 10
+y = 3
+print(x // y)
+
+3
+
+
+Exercice: 7
+Écrivez un programme Python qui demande à l'utilisateur son prénom et l'affiche à l'écran.
+
+prenom = input('Quel est ton prénom? ')
+print('Bonjour', prenom)
+
+
+Exercice: 8
+Écrivez un programme Python qui demande à l'utilisateur deux nombres entiers, les additionne et affiche le résultat.
+
+nombre1 = int(input('Entrez le premier nombre: '))
+nombre2 = int(input('Entrez le deuxième nombre: '))
+resultat = nombre1 + nombre2
+print('Le résultat de l\'addition est:', resultat)
+
+
+Exercice: 9
+Écrivez un programme Python qui demande à l'utilisateur une température en degrés Celsius, convertit cette température en degrés Fahrenheit et l'affiche à l'écran.
+
+celsius = float(input('Entrez une température en degrés Celsius: '))
+fahrenheit = (celsius * 9/5) + 32
+print('La température en degrés Fahrenheit est:', fahrenheit)
+
+
+Exercice: 10
+Écrivez un programme Python qui demande à l'utilisateur un nombre entier, vérifie si ce nombre est pair ou impair, puis l'affiche à l'écran avec un message correspondant.
+
+nombre = int(input('Entrez un nombre entier: '))
+if nombre % 2 == 0:
+    print('Le nombre', nombre, 'est pair.')
+else:
+    print('Le nombre', nombre, 'est impair.')
+
+

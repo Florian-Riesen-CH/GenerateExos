@@ -1,0 +1,98 @@
+Corrections exercises
+
+Exercice: 1
+Quelle est la différence entre une variable locale et une variable globale en Python ?
+
+Une variable locale est définie à l'intérieur d'une fonction et son accès est limité à cette fonction, tandis qu'une variable globale est définie en dehors des fonctions et on peut y accéder de n'importe où dans le programme.
+
+
+Exercice: 2
+Qu'est-ce qu'une conditionnelle en Python ?
+
+Une conditionnelle en Python est une structure de contrôle qui permet d'exécuter certains blocs de code en fonction d'une condition donnée. Les conditionnelles les plus couramment utilisées en Python sont 'if', 'elif' et 'else'.
+
+
+Exercice: 3
+Qu'est-ce qu'une fonction mathématique en Python ?
+
+Une fonction mathématique en Python est une fonction intégrée au langage qui permet d'effectuer des opérations mathématiques. Par exemple, la fonction 'abs()' renvoie la valeur absolue d'un nombre, la fonction 'sqrt()' renvoie la racine carrée d'un nombre, et ainsi de suite.
+
+
+Exercice: 4
+x = 2
+if x > 5:
+    print('x est supérieur à 5')
+else:
+    print('x est inférieur ou égal à 5')
+
+x est inférieur ou égal à 5
+
+
+Exercice: 5
+x = 5
+if x < 0:
+    print('x est négatif')
+elif x == 0:
+    print('x est égal à 0')
+else:
+    print('x est positif')
+
+x est positif
+
+
+Exercice: 6
+x = 10
+y = 5
+if x > 8 and y < 10:
+    print('Les deux conditions sont satisfaites')
+else:
+    print('Au moins une condition n'est pas satisfaite')
+
+Les deux conditions sont satisfaites
+
+
+Exercice: 7
+Écrire un programme Python qui demande à l'utilisateur de saisir son nom, puis affiche 'Bonjour, nom de l'utilisateur !'
+
+nom = input('Entrez votre nom : ')
+print('Bonjour, ' + nom + ' !')
+
+
+Exercice: 8
+Écrire une fonction Python qui prend en paramètre un nombre entier n, et qui affiche tous les nombres pairs de 0 à n.
+
+def afficher_nombres_pairs(n):
+    for i in range(n+1):
+        if i % 2 == 0:
+            print(i)
+
+
+Exercice: 9
+Écrire une fonction Python qui prend en paramètre une liste de nombres et qui renvoie la somme de tous les nombres de la liste.
+
+def calculer_somme(liste):
+    somme = 0
+    for nombre in liste:
+        somme += nombre
+    return somme
+
+
+Exercice: 10
+Écrire une fonction Python qui prend en paramètre une chaîne de caractères et qui renvoie le nombre de mots présents dans la chaîne.
+
+def compter_mots(chaine):
+    mots = chaine.split()
+    return len(mots)
+
+
+Exercice: 11
+Écrire une fonction Python qui prend en paramètres two_listes deux listes d'entiers, et qui renvoie une liste contenant les éléments qui sont présents dans les deux listes.
+
+def trouver_elements_communs(liste1, liste2):
+    elements_communs = []
+    for element in liste1:
+        if element in liste2:
+            elements_communs.append(element)
+    return elements_communs
+
+

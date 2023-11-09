@@ -1,0 +1,139 @@
+Corrections exercises
+
+Exercice: 1
+Quelle est la différence entre un entier et un nombre à virgule flottante en Python ?
+
+Un entier est un nombre sans décimale, tandis qu'un nombre à virgule flottante est un nombre avec une partie décimale.
+
+
+Exercice: 2
+Quelle est la différence entre l'opérateur '==' et l'opérateur 'is' en Python ?
+
+L'opérateur '==' teste si les valeurs sont égales, tandis que l'opérateur 'is' teste l'identité des objets (c'est-à-dire s'ils occupent la même référence en mémoire).
+
+
+Exercice: 3
+Quelle est la différence entre 'if' et 'elif' en Python ?
+
+'if' est utilisé pour tester une condition, tandis que 'elif' est utilisé pour tester des conditions supplémentaires après le premier 'if' ou la condition précédente 'elif' a échoué.
+
+
+Exercice: 4
+x = 5
+y = 2
+z = 3
+d = x * y + z
+print(d)
+
+Le code affiche 13.
+
+
+Exercice: 5
+a = 10
+b = 3
+if a > b:
+    print('a est plus grand que b')
+else:
+    print('b est plus grand ou égal à a')
+
+Le code affiche 'a est plus grand que b'.
+
+
+Exercice: 6
+age = int(input('Quel est votre âge ? '))
+if age >= 18:
+    print('Vous êtes majeur')
+else:
+    print('Vous êtes mineur')
+
+Le code demande à l'utilisateur son âge, puis affiche 'Vous êtes majeur' si l'âge est supérieur ou égal à 18, sinon affiche 'Vous êtes mineur'.
+
+
+Exercice: 7
+Écrivez un programme Python qui demande à l'utilisateur deux nombres entiers et affiche leur somme.
+
+Voici un exemple de solution possible :
+
+a = int(input('Entrez le premier nombre : '))
+b = int(input('Entrez le deuxième nombre : '))
+
+somme = a + b
+print('La somme des deux nombres est :', somme)
+
+
+Exercice: 8
+Écrivez un programme Python qui demande à l'utilisateur un nombre et indique s'il est pair ou impair.
+
+Voici un exemple de solution possible :
+
+nombre = int(input('Entrez un nombre : '))
+
+if nombre % 2 == 0:
+    print('Le nombre est pair')
+else:
+    print('Le nombre est impair')
+
+
+Exercice: 9
+Écrivez un programme Python qui calcule la factorielle d'un nombre entier positif.
+
+Voici un exemple de solution possible :
+
+nombre = int(input('Entrez un nombre entier positif : '))
+
+factorielle = 1
+for i in range(1, nombre + 1):
+    factorielle *= i
+
+print('La factorielle de', nombre, 'est :', factorielle)
+
+
+Exercice: 10
+Écrivez un programme Python qui demande à l'utilisateur une phrase et compte le nombre de mots dans la phrase.
+
+Voici un exemple de solution possible :
+
+phrase = input('Entrez une phrase : ')
+
+mots = phrase.split()
+nombre_mots = len(mots)
+
+print('Le nombre de mots dans la phrase est :', nombre_mots)
+
+
+Exercice: 11
+Écrivez un programme Python qui simule le jeu du pendu. Le programme doit choisir un mot aléatoire et demander à l'utilisateur de deviner les lettres du mot une par une.
+
+Voici un exemple de solution possible :
+
+import random
+
+mots = ['python', 'programme', 'informatique', 'exercice']
+mot = random.choice(mots)
+tentatives = 8
+lettres_trouvees = []
+
+while tentatives > 0:
+    lettre = input('Entrez une lettre : ')
+    if lettre in mot:
+        lettres_trouvees.append(lettre)
+    else:
+        tentatives -= 1
+
+    mot_affiche = ''
+    for lettre_mot in mot:
+        if lettre_mot in lettres_trouvees:
+            mot_affiche += lettre_mot
+        else:
+            mot_affiche += '_'
+
+    print('Mot à deviner :', mot_affiche)
+    print('Tentatives restantes :', tentatives)
+
+    if '_' not in mot_affiche:
+        print('Félicitations ! Vous avez trouvé le mot')
+        break
+
+print('Fin du jeu')
+
+
