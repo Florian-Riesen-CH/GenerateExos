@@ -4,77 +4,135 @@ import regex
 import webbrowser
 import os
 import pathlib
-
+import mail
+import random
+import utils
+nbSerie = 3
+continueProcess = True;
+gptModel = "gpt-3.5-turbo"
 noCours = 1
+exoFolderPath = str(pathlib.Path().resolve())+'\\Exos'
+studentMails = ['florian.riesen@outlook.com']
+mappingExosWithMail = {}
+messageIntroduction = "Bonjour,\n\nComme annoncé lors du dernier cours.\nVoici une série d'exercices vous permettant de vous entraîner.\nVous retrouverez en pièce jointe les corrections"
 
+def requestChatGPT():
+    # # Load your API key from an environment variable or secret management service
+    openai.api_key = "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"
+    print("'\033[92m'", "Envoie de la demande à l'assistant ...", "'\033[0m'")
+    response = openai.ChatCompletion.create(
+        model=gptModel,
+        messages=[
+            {"role": "system", "content": "You are an API who genarate python's exercises for advenced french student, the formmat of your answer must be JSON"},
+            {"role": "system", "content": "The JSON must be formated like: { \"exercises\":[ { \"number\": \"...\", \"type\": \"...\", \"difficulty\": \"...\", \"question\": \"...\", \"answer\": \"...\", }, { \"number\": \"...\", \"type\": \"...\", \"difficulty\": \"...\", \"question\": \"...\", \"answer\": \"...\", } ] }"},
+            {"role": "system", "content": "Students only know about variables and their type, conditional (if, elif, else, match, case), mathematic function and request input to users"},        
+            {"role": "system", "content": "Please avoid exercice who need loop or list to answerd"},
+            {"role": "assistant", "content":"Python use indentation and not ';' to determine end of line"}, 
+            {"role": "assistant", "content": "Difficulty has to be a number from 1 to 5"},
+            {"role": "user", "content": "Can you generate 3 tehorical exercises, 3 \"What print this code\", 5 practical exercises in french ? Difficulty should increase on each category"}
+        ], 
+        n=nbSerie
+    )
+    # Retirer les \n qui ne sont pas entre guillemets
+    json_content_one_line:str = str(response)
+    json_content_one_line = utils.remove_newlines_not_inside_quotes(json_content_one_line)
 
-def getEnonceExos(response, n):
+    #print(response)
+    #print(json_content_one_line)
+
+    print("Analyse des réponses ...")
+    for n in range(0,nbSerie):
+        getEnonceExos(json_content_one_line, n)
+
+def getEnonceExos(response, no):
     # Parsez la chaîne de caractères JSON pour obtenir un dictionnaire
-    print("Série n° ", n)
-    print("'\033[91m'", "Read openAi reponse", "'\033[0m'")
+    print("Série n° ", no)
+    print("'\033[92m'", "Read openAi reponse", "'\033[0m'")
     openAiAnswer = json.loads(str(response))
 
     # Accédez à l'élément 'content'
-    content = openAiAnswer['choices'][n]['message']['content']
+    content = openAiAnswer['choices'][no]['message']['content']
 
     #
-    print("'\033[91m'", "Extract JSON", "'\033[0m'")
+    print("'\033[92m'", "Extract JSON", "'\033[0m'")
     try:
         pattern = regex.compile(r'\{(?:[^{}]|(?R))*\}')
-        exercicesDecode = pattern.findall(str(content).replace('```',''))[0]
-    except  json.decoder.JSONDecodeError :
+        exercisesDecode = pattern.findall(str(content).replace('```',''))[0]
+        print("'\033[92m'", "Display exos", "'\033[0m'")
+        exercisesJson = json.loads(str(exercisesDecode))
+    except  json.decoder.JSONDecodeError as e:
+        print("'\033[91m'", "Error happend ", e.msg, "'\033[0m'")
         print("'\033[91m'", str(content), "'\033[0m'")
-        exit()
+        return
 
-    #print(str(exercicesDecode).replace('\n', ''))
-    
-    print("'\033[91m'", "Display exos", "'\033[0m'")
+    #print(str(exercisesDecode))
 
-    exercicesJson = json.loads(str(exercicesDecode).strip('\n').strip())
-    
-    html = ""
     # Accédez à l'élément 'content'
-    for element in exercicesJson['exercices']:
-        html = html + GenerateHTML(element)
-        
-    openFile(html, "Cours n°"+str(noCours)+"-Série n°"+str(n)+"-Exercices")
     
+    GenerateHTML(exercisesJson, no)  
+    GenerateCorrectedTxt(exercisesJson, "Série n°"+str(nbSerie)+"-Corrigés")
+    
+def GenerateHTML(exercisesJson, serieNo):
+    html = '<a>'+messageIntroduction.replace('\n', '<br>')+'</a>'
+    for element in exercisesJson['exercises']:
+        html += '<h3>Exercice: '+str(element['number'])+'</h3>'
+        if ("for" in str(element['answer'])) or ("while" in str(element['answer'])):
+            html += '<a><i>La réponse a cette question nécessite la conaissance des boucles</i></a><br/><br/>'
+        html += '<a>'+str(element['question']).replace('\n', '<br>').replace(' ', '&nbsp')+'</a>'
+    openFile(html, "Série n°"+str(serieNo)+"-exercices")
+
 def openFile(html, fileName):
-    filePath = str(pathlib.Path().resolve())+'\\Exos\\'+str(fileName+".html")
-    print("'\033[91m'", filePath, "'\033[0m'")
+    filePath = exoFolderPath + '\\Cours n°'+str(noCours)+'\\'+str(fileName+".html")
+    print("'\033[92m'", filePath, "'\033[0m'")
     path = os.path.abspath(filePath)
     url = 'file://' + path
 
     with open(path, 'w') as f:
         f.write(html)
     webbrowser.open(url)
-    
-def GenerateHTML(element):
-    html = '<h3>Exercice: '+str(element['numero'])+'</h3><h4> ('+str(element['difficulte'])+')</h4>'
-    html = html + '<p>'+str(element['question'])+'</p>'
-    return html
-    
 
-n = 3
-# # Load your API key from an environment variable or secret management service
-openai.api_key = "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"
-print("'\033[91m'", "Envoie de la demande à l'assistant ...", "'\033[0m'")
-response = openai.ChatCompletion.create(
-    model="gpt-4",
-    messages=[
-        {"role": "system", "content": "Tu es un programme qui génères des exerices python pour des élèves conaissant les base de la programmation"},
-        {"role": "system", "content": "Le format final est un JSON, dans un tableau nommé 'exercices' contenant les élément 'type','difficulte', 'numero','question', 'reponse', ta réponse ne doit contenir aucun retour à la ligne (\n) et aucune lettre avec des accents"},
-        {"role": "system", "content": "Tu parles que le français"},
-        {"role": "system", "content": "Tu es seulement capable de répondre des fichiers JSON"},
-        {"role": "system", "content": "Aujourd'hui, les élèves ont appris les variables et leur différent type, les conditions et les fonctions mathématiques de base"},
-        {"role": "system", "content": "Les élèves ne conaissent pas les liste ou les boucles, ne pose donc aucune question en lien avec"},
-        {"role": "system", "content": "Le texte que tu génèreras sera directement envoyé aux élèves, il faut donc éviter tout texte superflu, ne donne que les exercices, ne confirme pas que tu as compris ma demande"},
-        {"role": "user", "content": "Peux-tu me générer 5 exercices théorique et 5 exercices pratiques de niveau moyen à très difficilesur la leçon vue aujourd'hui ainsi que les corrigés ?"}
-    ], 
-    n=n
-)
+def GenerateCorrectedTxt(exercisesJson, fileName):
+    print("'\033[92m'", "Genarate correction file", "'\033[0m'")
+    txt = "Corrections exercises" + "\n\n"
+    for element in exercisesJson['exercises']:
+        txt += "Exercice: " + str(element['number']) + "\n"
+        txt += element['question'] + "\n\n"
+        txt += element['answer'] + "\n\n\n"
 
-print("Analyse des réponses ...")
+    filePath = exoFolderPath + '\\Cours n°'+str(noCours)+'\\'+str(fileName+".txt")
+    path = os.path.abspath(filePath)
+    with open(path, 'w') as f:
+        f.write(txt)
 
-for n in range(0,n):
-    getEnonceExos(response, n)
+def sendEmails():
+    smptPassword = input("Quel est le mot du passe du SMTP: ")
+    for i in studentMails:
+        print("'\033[92m'", "Send emails ...", "'\033[0m'")
+        exerciceNo = random.randint(0, nbSerie-1)
+        mappingExosWithMail[i] = exerciceNo
+        # Ouvrir le fichier en mode lecture
+        with open(exoFolderPath+"\\Cours n°"+str(noCours)+"\\Série n°"+str(exerciceNo)+"-exercises.html", 'r') as fichier:
+            # Lire tout le contenu du fichier
+            contenu = fichier.read()
+            # Afficher le contenu lu
+            mail.sendEmail('Exercices du cours n°'+str(noCours),i, smptPassword, contenu,"Corrections.txt",exoFolderPath+"\\Cours n°"+str(noCours)+"\\Série n°"+str(exerciceNo)+"-Corrigés.txt")
+        
+
+    filePath = exoFolderPath + '\\Cours n°'+str(noCours)+'\\Mapping.txt'
+    path = os.path.abspath(filePath)
+    with open(path, 'w') as f:
+        for map in mappingExosWithMail:
+            f.write(map+": "+ str(mappingExosWithMail[map]) + '\n')
+
+while continueProcess:
+    choixUser = input("Que souhaitez-vous faire ?\n1 - Générer des séries d'exercices \n2 - Envoyer les séries aux élèves\n >>> ")
+    if choixUser == "1":
+        requestChatGPT()
+    elif choixUser == "2":
+        sendEmails()
+    else:  
+        print("Merci de rentrer une valeur valide (1 ou 2)")
+
+    continueProcessUser = input("Souhaitez-vous quitter (o => oui) ?\n >>> ")
+    if continueProcessUser.lower() == "o":
+        continueProcess = False
