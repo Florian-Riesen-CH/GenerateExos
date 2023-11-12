@@ -1,84 +1,115 @@
 Corrections exercises
 
 Exercice: 1
-Qu'est-ce qu'une variable en programmation ?
+Qu'est-ce qu'une variable en Python ?
 
-Une variable en programmation est un espace de mémoire utilisé pour stocker une valeur. Elle permet de manipuler et de représenter des données dans un programme.
+Une variable en Python est un espace de stockage qui permet de conserver une valeur temporaire pendant l'exécution du programme. On peut lui attribuer une valeur et ensuite l'utiliser dans les calculs ou les opérations.
 
 
 Exercice: 2
-Quels sont les types de données les plus courants en Python ?
+Quelles sont les différences entre les conditions 'if' et 'elif' en Python ?
 
-Les types de données les plus courants en Python sont les entiers (int), les nombres à virgule flottante (float), les chaînes de caractères (str) et les booléens (bool).
+En Python, la condition 'if' est utilisée pour vérifier une seule condition. Si cette condition est vraie, alors le bloc de code correspondant est exécuté et les autres blocs de code après le 'if' sont ignorés. D'autre part, la condition 'elif' est utilisée pour vérifier une autre condition seulement si la condition précédente (if ou elif) est fausse. Si la condition 'elif' est vraie, le bloc de code correspondant est exécuté et les autres blocs de code après le 'elif' sont ignorés.
 
 
 Exercice: 3
-Quels sont les opérateurs de comparaison en Python ?
+Quelle est la différence entre les opérateurs logiques 'and' et 'or' en Python ?
 
-Les opérateurs de comparaison en Python sont : égalité (==), différence (!=), inférieur (<), supérieur (>), inférieur ou égal (<=), supérieur ou égal (>=). Ils permettent de comparer des valeurs et de retourner un booléen (True ou False) en fonction du résultat de la comparaison.
+L'opérateur logique 'and' en Python retourne True si les deux conditions sont vraies. Sinon, il retourne False. L'opérateur logique 'or' en Python retourne True si au moins l'une des conditions est vraie. Sinon, il retourne False.
 
 
 Exercice: 4
-Que va afficher le code suivant ?
-
-x = 5
-y = 2
-print(x + y)
+a = 5
+b = 2
+print(a + b)
 
 7
 
 
 Exercice: 5
-Que va afficher le code suivant ?
+a = 10
+if a > 5:
+    print('a est supérieur à 5')
+else:
+    print('a est inférieur ou égal à 5')
 
-x = "Bonjour"
-y = "monde"
-print(x + " " + y)
-
-Bonjour monde
+a est supérieur à 5
 
 
 Exercice: 6
-Que va afficher le code suivant ?
+a = 3
+b = 4
+c = 5
+if a < b < c:
+    print('b est plus grand que a et b est plus petit que c')
+else:
+    print('La condition n'est pas satisfaite')
 
-x = 10
-y = 3
-print(x // y)
-
-3
+b est plus grand que a et b est plus petit que c
 
 
 Exercice: 7
-Écrivez un programme Python qui demande à l'utilisateur son prénom et l'affiche à l'écran.
+Écrivez un programme Python qui demande à l'utilisateur d'entrer son nom et affiche un message de salutation avec ce nom.
 
-prenom = input('Quel est ton prénom? ')
-print('Bonjour', prenom)
+name = input('Entrez votre nom : ')
+print('Bonjour', name)
 
 
 Exercice: 8
-Écrivez un programme Python qui demande à l'utilisateur deux nombres entiers, les additionne et affiche le résultat.
+Écrivez un programme Python qui demande à l'utilisateur d'entrer un nombre entier et affiche si ce nombre est pair ou impair.
 
-nombre1 = int(input('Entrez le premier nombre: '))
-nombre2 = int(input('Entrez le deuxième nombre: '))
-resultat = nombre1 + nombre2
-print('Le résultat de l\'addition est:', resultat)
+number = int(input('Entrez un nombre entier : '))
+if number % 2 == 0:
+    print('Le nombre est pair')
+else:
+    print('Le nombre est impair')
 
 
 Exercice: 9
-Écrivez un programme Python qui demande à l'utilisateur une température en degrés Celsius, convertit cette température en degrés Fahrenheit et l'affiche à l'écran.
+Écrivez une fonction Python qui calcule la factorielle d'un nombre donné. La factorielle d'un nombre entier positif n est le produit de tous les entiers positifs inférieurs ou égaux à n.
 
-celsius = float(input('Entrez une température en degrés Celsius: '))
-fahrenheit = (celsius * 9/5) + 32
-print('La température en degrés Fahrenheit est:', fahrenheit)
+def factorielle(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorielle(n-1)
+
+nombre = int(input('Entrez un nombre entier : '))
+resultat = factorielle(nombre)
+print('Le factorielle de', nombre, 'est', resultat)
 
 
 Exercice: 10
-Écrivez un programme Python qui demande à l'utilisateur un nombre entier, vérifie si ce nombre est pair ou impair, puis l'affiche à l'écran avec un message correspondant.
+Écrivez une fonction Python qui vérifie si une chaîne de caractères est un palindrome. Un palindrome est une chaîne qui se lit de la même manière de gauche à droite et de droite à gauche.
 
-nombre = int(input('Entrez un nombre entier: '))
-if nombre % 2 == 0:
-    print('Le nombre', nombre, 'est pair.')
+def est_palindrome(chaine):
+    chaine_inverse = chaine[::-1]
+    if chaine == chaine_inverse:
+        return True
+    else:
+        return False
+
+mot = input('Entrez une chaîne de caractères : ')
+if est_palindrome(mot):
+    print('La chaîne', mot, 'est un palindrome')
 else:
-    print('Le nombre', nombre, 'est impair.')
+    print('La chaîne', mot, 'n\'est pas un palindrome')
+
+
+Exercice: 11
+Écrivez une fonction Python qui trouve tous les nombres premiers inférieurs à un nombre donné.
+
+def est_premier(nombre):
+    if nombre <= 1:
+        return False
+    for i in range(2, nombre):
+        if nombre % i == 0:
+            return False
+    return True
+
+limite = int(input('Entrez un nombre entier : '))
+for i in range(2, limite):
+    if est_premier(i):
+        print(i)
 
 

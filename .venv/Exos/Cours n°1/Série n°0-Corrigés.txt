@@ -1,98 +1,96 @@
 Corrections exercises
 
 Exercice: 1
-Quelle est la différence entre une variable locale et une variable globale en Python ?
+Qu'est-ce qu'une variable en programmation ?
 
-Une variable locale est définie à l'intérieur d'une fonction et son accès est limité à cette fonction, tandis qu'une variable globale est définie en dehors des fonctions et on peut y accéder de n'importe où dans le programme.
+Une variable est un espace de stockage qui contient une valeur ou une référence vers une valeur.
 
 
 Exercice: 2
-Qu'est-ce qu'une conditionnelle en Python ?
+Quelle est la différence entre "if" et "elif" en Python ?
 
-Une conditionnelle en Python est une structure de contrôle qui permet d'exécuter certains blocs de code en fonction d'une condition donnée. Les conditionnelles les plus couramment utilisées en Python sont 'if', 'elif' et 'else'.
+"if" est utilisé pour évaluer une condition et exécuter un bloc de code si la condition est vraie, tandis que "elif" est utilisé pour évaluer une condition supplémentaire si la condition précédente est fausse.
 
 
 Exercice: 3
-Qu'est-ce qu'une fonction mathématique en Python ?
+Quels sont les principaux types de données en Python ?
 
-Une fonction mathématique en Python est une fonction intégrée au langage qui permet d'effectuer des opérations mathématiques. Par exemple, la fonction 'abs()' renvoie la valeur absolue d'un nombre, la fonction 'sqrt()' renvoie la racine carrée d'un nombre, et ainsi de suite.
+Les principaux types de données en Python sont: int (entier), float (nombre à virgule flottante), str (chaîne de caractères), bool (booléen), list (liste) et dict (dictionnaire).
 
 
 Exercice: 4
-x = 2
+Que va afficher le code suivant ?
+
+x = 10
 if x > 5:
     print('x est supérieur à 5')
-else:
-    print('x est inférieur ou égal à 5')
 
-x est inférieur ou égal à 5
+x est supérieur à 5
 
 
 Exercice: 5
-x = 5
-if x < 0:
-    print('x est négatif')
-elif x == 0:
-    print('x est égal à 0')
-else:
-    print('x est positif')
+Que va afficher le code suivant ?
 
-x est positif
+x = 5
+if x > 10:
+    print('x est supérieur à 10')
+elif x > 7:
+    print('x est supérieur à 7')
+else:
+    print('x est inférieur ou égal à 7')
+
+x est inférieur ou égal à 7
 
 
 Exercice: 6
-x = 10
-y = 5
-if x > 8 and y < 10:
-    print('Les deux conditions sont satisfaites')
-else:
-    print('Au moins une condition n'est pas satisfaite')
+Que va afficher le code suivant ?
 
-Les deux conditions sont satisfaites
+x = 3
+if x % 2 == 0:
+    print('x est pair')
+else:
+    print('x est impair')
+
+x est impair
 
 
 Exercice: 7
-Écrire un programme Python qui demande à l'utilisateur de saisir son nom, puis affiche 'Bonjour, nom de l'utilisateur !'
+Écrivez un programme Python qui demande à l'utilisateur de saisir un nombre entier et qui affiche à l'écran si ce nombre est pair ou impair.
 
-nom = input('Entrez votre nom : ')
-print('Bonjour, ' + nom + ' !')
+n = int(input('Entrez un nombre entier : '))
+if n % 2 == 0:
+    print('Le nombre est pair.')
+else:
+    print('Le nombre est impair.')
 
 
 Exercice: 8
-Écrire une fonction Python qui prend en paramètre un nombre entier n, et qui affiche tous les nombres pairs de 0 à n.
+Écrivez un programme Python qui demande à l'utilisateur de saisir deux nombres et qui affiche à l'écran le plus grand des deux.
 
-def afficher_nombres_pairs(n):
-    for i in range(n+1):
-        if i % 2 == 0:
-            print(i)
+a = float(input('Entrez le premier nombre : '))
+b = float(input('Entrez le deuxième nombre : '))
+if a > b:
+    print('Le plus grand nombre est', a)
+else:
+    print('Le plus grand nombre est', b)
 
 
 Exercice: 9
-Écrire une fonction Python qui prend en paramètre une liste de nombres et qui renvoie la somme de tous les nombres de la liste.
+Écrivez une fonction Python nommée "factorial" qui prend un nombre entier en paramètre et retourne sa factorielle. (Par exemple, factorial(5) doit retourner 120)
 
-def calculer_somme(liste):
-    somme = 0
-    for nombre in liste:
-        somme += nombre
-    return somme
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n-1)
 
 
 Exercice: 10
-Écrire une fonction Python qui prend en paramètre une chaîne de caractères et qui renvoie le nombre de mots présents dans la chaîne.
+Écrivez un programme Python qui demande à l'utilisateur de saisir une liste de nombres entiers et qui affiche à l'écran le plus grand nombre de la liste.
 
-def compter_mots(chaine):
-    mots = chaine.split()
-    return len(mots)
-
-
-Exercice: 11
-Écrire une fonction Python qui prend en paramètres two_listes deux listes d'entiers, et qui renvoie une liste contenant les éléments qui sont présents dans les deux listes.
-
-def trouver_elements_communs(liste1, liste2):
-    elements_communs = []
-    for element in liste1:
-        if element in liste2:
-            elements_communs.append(element)
-    return elements_communs
+numbers = input('Entrez une liste de nombres entiers séparés par des espaces : ')
+numbers_list = list(map(int, numbers.split()))
+max_number = max(numbers_list)
+print('Le plus grand nombre de la liste est :', max_number)
 
 

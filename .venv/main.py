@@ -18,7 +18,7 @@ messageIntroduction = "Bonjour,\n\nComme annoncé lors du dernier cours.\nVoici 
 
 def requestChatGPT():
     # # Load your API key from an environment variable or secret management service
-    openai.api_key = "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"
+    openai.api_key = "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"
     print("'\033[92m'", "Envoie de la demande à l'assistant ...", "'\033[0m'")
     response = openai.ChatCompletion.create(
         model=gptModel,
@@ -27,9 +27,9 @@ def requestChatGPT():
             {"role": "system", "content": "The JSON must be formated like: { \"exercises\":[ { \"number\": \"...\", \"type\": \"...\", \"difficulty\": \"...\", \"question\": \"...\", \"answer\": \"...\", }, { \"number\": \"...\", \"type\": \"...\", \"difficulty\": \"...\", \"question\": \"...\", \"answer\": \"...\", } ] }"},
             {"role": "system", "content": "Students only know about variables and their type, conditional (if, elif, else, match, case), mathematic function and request input to users"},        
             {"role": "system", "content": "Please avoid exercice who need loop or list to answerd"},
-            {"role": "assistant", "content":"Python use indentation and not ';' to determine end of line"}, 
-            {"role": "assistant", "content": "Difficulty has to be a number from 1 to 5"},
-            {"role": "assistant", "content": "Number has to be a the number of the exercise"},
+            {"role": "system", "content":"Python use indentation and not ';' to determine end of line"}, 
+            {"role": "system", "content": "Difficulty has to be a number from 1 to 5"},
+            {"role": "system", "content": "Number has to be a the number of the exercise"},
             {"role": "user", "content": "Can you generate 3 tehorical exercises, 3 \"What print this code\", 5 practical exercises in french ? Difficulty should increase on each category"}
         ], 
         n=nbSerie
