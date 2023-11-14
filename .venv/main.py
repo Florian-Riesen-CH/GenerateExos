@@ -23,7 +23,7 @@ def requestChatGPT():
     response = openai.ChatCompletion.create(
         model=gptModel,
         messages=[
-            {"role": "system", "content": "You are an API who genarate python's exercises for advenced french student, the formmat of your answer must be JSON"},
+            {"role": "system", "content": "You are an API who genarate python's exercises for advenced french student, the format of your answer must be JSON"},
             {"role": "system", "content": "The JSON must be formated like: { \"exercises\":[ { \"number\": \"...\", \"type\": \"...\", \"difficulty\": \"...\", \"question\": \"...\", \"answer\": \"...\", }, { \"number\": \"...\", \"type\": \"...\", \"difficulty\": \"...\", \"question\": \"...\", \"answer\": \"...\", } ] }"},
             {"role": "system", "content": "Students only know about variables and their type, conditional (if, elif, else, match, case), mathematic function and request input to users"},        
             {"role": "system", "content": "Please avoid exercice who need loop or list to answerd"},
