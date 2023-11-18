@@ -7,7 +7,7 @@ from email import encoders
 # Définissez les informations de connexion
 smtp_server = "smtp.office365.com"
 port = 587  # Pour le démarrage TLS
-sender_email = "florian.riesen@outlook.com"
+sender_email = "pj01tjy@eduvaud.ch"
 
 def sendEmail(subject:str, receiver_email: str, smtp_password:str, html:str, filename:str, attachmentfilePath:str):
     # Créez un message MIMEMultipart et configurez les en-têtes
