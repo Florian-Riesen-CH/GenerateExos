@@ -1,115 +1,106 @@
 Corrections exercises
 
 Exercice: 1
-Qu'est-ce qu'une variable en Python ?
+Qu'est-ce qu'un dictionnaire en Python ?
 
-Une variable en Python est un espace de stockage qui permet de conserver une valeur temporaire pendant l'exécution du programme. On peut lui attribuer une valeur et ensuite l'utiliser dans les calculs ou les opérations.
+Un dictionnaire est un type de données modifiable en python qui stocke des paires de clés et de valeurs.
 
 
 Exercice: 2
-Quelles sont les différences entre les conditions 'if' et 'elif' en Python ?
+Quelle est la différence entre une liste et un tuple en Python ?
 
-En Python, la condition 'if' est utilisée pour vérifier une seule condition. Si cette condition est vraie, alors le bloc de code correspondant est exécuté et les autres blocs de code après le 'if' sont ignorés. D'autre part, la condition 'elif' est utilisée pour vérifier une autre condition seulement si la condition précédente (if ou elif) est fausse. Si la condition 'elif' est vraie, le bloc de code correspondant est exécuté et les autres blocs de code après le 'elif' sont ignorés.
+Le principal différence est que les listes sont modifiables alors que les tuples ne le sont pas.
 
 
 Exercice: 3
-Quelle est la différence entre les opérateurs logiques 'and' et 'or' en Python ?
+En Python, qu'est-ce que le 'slicing' ?
 
-L'opérateur logique 'and' en Python retourne True si les deux conditions sont vraies. Sinon, il retourne False. L'opérateur logique 'or' en Python retourne True si au moins l'une des conditions est vraie. Sinon, il retourne False.
+Le 'slicing' est une technique pour extraire une partie d'une liste, d'un tuple ou d'une chaîne de caractères.
 
 
 Exercice: 4
-a = 5
-b = 2
-print(a + b)
+Expliquer le fonctionnement d'une boucle 'for' en Python.'
 
-7
+Une boucle 'for' est une boucle qui se répète un nombre prédéfini de fois. Elle est souvent utilisée pour parcourir les items d'une liste ou d'une autre structure de données.
 
 
 Exercice: 5
-a = 10
-if a > 5:
-    print('a est supérieur à 5')
-else:
-    print('a est inférieur ou égal à 5')
+Que retourne ce code Python : print('Hello, ' + 'World!')
 
-a est supérieur à 5
+Ce code retourne 'Hello, World!'
 
 
 Exercice: 6
-a = 3
-b = 4
-c = 5
-if a < b < c:
-    print('b est plus grand que a et b est plus petit que c')
-else:
-    print('La condition n'est pas satisfaite')
+Que retourne ce code Python : print(5//2)
 
-b est plus grand que a et b est plus petit que c
+Ce code retourne 2 car '//' désigne une division entière en Python.
 
 
 Exercice: 7
-Écrivez un programme Python qui demande à l'utilisateur d'entrer son nom et affiche un message de salutation avec ce nom.
+Que retourne ce code Python : print('Hello, ' + 'World!'[0])
 
-name = input('Entrez votre nom : ')
-print('Bonjour', name)
+Ce code retourne 'Hello, W' car 'World!'[0] va chercher le premier caractère de la chaîne 'World!'
 
 
 Exercice: 8
-Écrivez un programme Python qui demande à l'utilisateur d'entrer un nombre entier et affiche si ce nombre est pair ou impair.
+Que retourne ce code Python : print(5**2)
 
-number = int(input('Entrez un nombre entier : '))
-if number % 2 == 0:
-    print('Le nombre est pair')
-else:
-    print('Le nombre est impair')
+Ce code retourne 25 car '**' désigne un opérateur d'exponentiation en Python.
 
 
 Exercice: 9
-Écrivez une fonction Python qui calcule la factorielle d'un nombre donné. La factorielle d'un nombre entier positif n est le produit de tous les entiers positifs inférieurs ou égaux à n.
+Que retourne ce code Python : print((1, 2, 3) * 2)
 
-def factorielle(n):
-    if n == 0:
-        return 1
-    else:
-        return n * factorielle(n-1)
-
-nombre = int(input('Entrez un nombre entier : '))
-resultat = factorielle(nombre)
-print('Le factorielle de', nombre, 'est', resultat)
+Ce code retourne '(1, 2, 3, 1, 2, 3)' car '*' est un opérateur de multiplication appliqué à un tuple.
 
 
 Exercice: 10
-Écrivez une fonction Python qui vérifie si une chaîne de caractères est un palindrome. Un palindrome est une chaîne qui se lit de la même manière de gauche à droite et de droite à gauche.
+Ecrire un script Python qui demande un nombre à l'utilisateur et qui affiche le double de ce nombre.
 
-def est_palindrome(chaine):
-    chaine_inverse = chaine[::-1]
-    if chaine == chaine_inverse:
-        return True
-    else:
-        return False
-
-mot = input('Entrez une chaîne de caractères : ')
-if est_palindrome(mot):
-    print('La chaîne', mot, 'est un palindrome')
-else:
-    print('La chaîne', mot, 'n\'est pas un palindrome')
+num = int(input('Entrez un nombre : '))
+print(num * 2)
 
 
 Exercice: 11
-Écrivez une fonction Python qui trouve tous les nombres premiers inférieurs à un nombre donné.
+Ecrire un script Python qui demande le nom de l'utilisateur et qui affiche 'Bonjour, ' suivi du nom de l'utilisateur.
 
-def est_premier(nombre):
-    if nombre <= 1:
-        return False
-    for i in range(2, nombre):
-        if nombre % i == 0:
-            return False
-    return True
+nom = input('Quel est votre nom ? ')
+print('Bonjour, ' + nom)
 
-limite = int(input('Entrez un nombre entier : '))
-for i in range(2, limite):
-    if est_premier(i):
-        print(i)
+
+Exercice: 12
+Ecrire un script Python qui demande deux nombres à l'utilisateur et qui affiche leur moyenne.
+
+num1 = int(input('Entrez un premier nombre : '))
+num2 = int(input('Entrez un second nombre : '))
+print((num1 + num2) / 2)
+
+
+Exercice: 13
+Ecrire un script Python qui demande une phrase à l'utilisateur et qui affiche le nombre de mots dans cette phrase.
+
+phrase = input('Entrez une phrase : ')
+print(len(phrase.split(' ')))
+
+
+Exercice: 14
+Ecrire une fonction Python qui prend en paramètre une liste de nombres et qui retourne la somme de ces nombres.
+
+def somme(liste):
+    return sum(liste)
+
+
+Exercice: 15
+Ecrire une fonction Python qui prend en paramètre une liste de nombres et qui retourne la liste de ces nombres triée en ordre croissant.
+
+def tri(liste):
+    return sorted(liste)
+
+
+Exercice: 16
+Ecrire une fonction Python qui prend en paramètre deux listes de nombres et qui return une troisième liste contenant les éléments communs aux deux listes sans doublons.
+
+def intersection(liste1, liste2):
+    return list(set(liste1) & set(liste2))
 
 

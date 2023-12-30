@@ -3,92 +3,110 @@ Corrections exercises
 Exercice: 1
 Qu'est-ce qu'une variable en Python ?
 
-Une variable en Python est un espace réservé en mémoire où nous pouvons stocker des valeurs. Elle peut être de différents types comme un entier, un flottant, une chaîne de caractères, un booléen, etc.
+En Python, une variable est un espace de stockage dans la mémoire qui contient des informations ou des données.
 
 
 Exercice: 2
-Quelles sont les différences entre un if et un elif en Python ?
+Qu'est-ce qu'une boucle for en Python ?
 
-Un if est une condition qui est évaluée et exécute un bloc de code si la condition est True. Si la condition est False, le bloc de code ne sera pas exécuté. Un elif est une autre condition qui est évaluée seulement si les conditions précédentes étaient False. Si la condition de l'elif est True, le bloc de code correspondant sera exécuté. Sinon, le bloc de code de l'elif ne sera pas exécuté.
+Une boucle for en Python est utilisée pour parcourir les éléments d'une séquence comme une liste ou une chaîne de caractères.
 
 
 Exercice: 3
-Quelle est la différence entre une fonction intégrée (built-in) et une fonction définie par l'utilisateur en Python ?
+Qu'est-ce qu'une fonction en Python ?
 
-Une fonction intégrée en Python est une fonction qui est déjà disponible dans le langage et peut être utilisée directement sans avoir besoin de la définir. Par exemple, la fonction print() est une fonction intégrée en Python. Une fonction définie par l'utilisateur est une fonction personnalisée créée par le programmeur selon ses besoins spécifiques. Elle doit être définie avant de pouvoir être utilisée.
+Une fonction en Python est une séquence d'instructions qui peut être appelée plusieurs fois. Elle peut prendre des paramètres et retourner un résultat.
 
 
 Exercice: 4
-a = 10
-b = 5
-print(a+b)
+Qu'est-ce que la bibliothèque mathématique en Python ?
 
-Ce code affiche 15
+La bibliothèque mathématique en Python fournit des fonctions mathématiques qui permettent de réaliser des calculs complexes.
 
 
 Exercice: 5
-a = 2
-b = 3
-c = 5
-if a > b:
-    print('a est plus grand que b')
-elif b > c:
-    print('b est plus grand que c')
-else:
-    print('a est plus petit ou égal à b et b est plus petit ou égal à c')
+Que renvoie ce code : 'print(4 + 5)'
 
-Ce code affiche 'a est plus petit ou égal à b et b est plus petit ou égal à c'
+9
 
 
 Exercice: 6
-a = 'Bonjour'
-print(len(a))
+Que renvoie ce code : 'print('Python'.lower())'
 
-Ce code affiche 7
+python
 
 
 Exercice: 7
-Écrivez un programme Python qui demande à l'utilisateur son prénom, puis affiche 'Bonjour, prénom!'
+Que renvoie ce code : 'print(10 % 3)'
 
-prenom = input('Entrez votre prénom : ')
-print('Bonjour, ' + prenom + '!')
+1
 
 
 Exercice: 8
-Écrivez une fonction Python qui prend deux nombres en entrée et retourne leur somme.
+Que renvoie ce code : 'print([i for i in range(10) if i % 2 == 0])'
+
+[0, 2, 4, 6, 8]
+
+
+Exercice: 9
+Que renvoie ce code : 'print('Hello World!'.replace('World', 'Python'))'
+
+Hello Python!
+
+
+Exercice: 10
+Ecrire une fonction qui renvoie la somme de deux nombres.
 
 def somme(a, b):
     return a + b
 
 
-Exercice: 9
-Écrivez une fonction Python qui prend un nombre en entrée et retourne True si le nombre est pair et False sinon.
-
-def est_pair(nombre):
-    if nombre % 2 == 0:
-        return True
-    else:
-        return False
-
-
-Exercice: 10
-Écrivez un programme Python qui demande à l'utilisateur un nombre entier n et calcule la somme des entiers de 1 à n.
-
-n = int(input('Entrez un nombre entier : '))
-somme = 0
-for i in range(1, n+1):
-    somme += i
-print('La somme des entiers de 1 à', n, 'est :', somme)
-
-
 Exercice: 11
-Écrivez une fonction Python qui prend une liste en entrée et retourne une nouvelle liste contenant uniquement les éléments pairs de la liste d'origine.
+Ecrire une boucle qui affiche les chiffres de 1 à 10.
 
-def filtrer_elements_pairs(liste):
-    elements_pairs = []
-    for element in liste:
-        if element % 2 == 0:
-            elements_pairs.append(element)
-    return elements_pairs
+for i in range(1, 11):
+    print(i)
+
+
+Exercice: 12
+Ecrire une fonction qui renvoie le plus grand de deux nombres.
+
+def max(a, b):
+    if a > b:
+        return a
+    else:
+        return b
+
+
+Exercice: 13
+Ecrire une fonction qui renvoie le factoriel d'un nombre.
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+
+Exercice: 14
+Ecrire une fonction qui renvoie la longueur d'une chaîne de caractères.
+
+def length(string):
+    return len(string)
+
+
+Exercice: 15
+Ecrire une fonction qui renvoie la taille d'une liste.
+
+def size(list):
+    return len(list)
+
+
+Exercice: 16
+Ecrire une boucle qui affiche les chiffres pairs de 1 à 10.
+
+for i in range(1, 11):
+    if i % 2 == 0:
+        print(i)
 
 

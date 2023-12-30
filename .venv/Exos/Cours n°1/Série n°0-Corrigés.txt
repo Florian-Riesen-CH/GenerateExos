@@ -1,96 +1,32 @@
 Corrections exercises
 
 Exercice: 1
-Qu'est-ce qu'une variable en programmation ?
+Écrivez un algorithme qui recherche dans un tableau non trié l'élément maximal et qui retourne sa position.
 
-Une variable est un espace de stockage qui contient une valeur ou une référence vers une valeur.
+def trouver_max_position(tableau):
+    max_valeur = tableau[0]
+    max_position = 0
+    pour i dans la plage(len(tableau)):
+        si tableau[i] > max_valeur:
+            max_valeur = tableau[i]
+            max_position = i
+    retourner max_position
 
 
 Exercice: 2
-Quelle est la différence entre "if" et "elif" en Python ?
+Écrivez un algorithme qui détermine si un graphe non orienté est connexe ou non.
 
-"if" est utilisé pour évaluer une condition et exécuter un bloc de code si la condition est vraie, tandis que "elif" est utilisé pour évaluer une condition supplémentaire si la condition précédente est fausse.
-
-
-Exercice: 3
-Quels sont les principaux types de données en Python ?
-
-Les principaux types de données en Python sont: int (entier), float (nombre à virgule flottante), str (chaîne de caractères), bool (booléen), list (liste) et dict (dictionnaire).
-
-
-Exercice: 4
-Que va afficher le code suivant ?
-
-x = 10
-if x > 5:
-    print('x est supérieur à 5')
-
-x est supérieur à 5
-
-
-Exercice: 5
-Que va afficher le code suivant ?
-
-x = 5
-if x > 10:
-    print('x est supérieur à 10')
-elif x > 7:
-    print('x est supérieur à 7')
-else:
-    print('x est inférieur ou égal à 7')
-
-x est inférieur ou égal à 7
-
-
-Exercice: 6
-Que va afficher le code suivant ?
-
-x = 3
-if x % 2 == 0:
-    print('x est pair')
-else:
-    print('x est impair')
-
-x est impair
-
-
-Exercice: 7
-Écrivez un programme Python qui demande à l'utilisateur de saisir un nombre entier et qui affiche à l'écran si ce nombre est pair ou impair.
-
-n = int(input('Entrez un nombre entier : '))
-if n % 2 == 0:
-    print('Le nombre est pair.')
-else:
-    print('Le nombre est impair.')
-
-
-Exercice: 8
-Écrivez un programme Python qui demande à l'utilisateur de saisir deux nombres et qui affiche à l'écran le plus grand des deux.
-
-a = float(input('Entrez le premier nombre : '))
-b = float(input('Entrez le deuxième nombre : '))
-if a > b:
-    print('Le plus grand nombre est', a)
-else:
-    print('Le plus grand nombre est', b)
-
-
-Exercice: 9
-Écrivez une fonction Python nommée "factorial" qui prend un nombre entier en paramètre et retourne sa factorielle. (Par exemple, factorial(5) doit retourner 120)
-
-def factorial(n):
-    if n == 0 or n == 1:
-        return 1
-    else:
-        return n * factorial(n-1)
-
-
-Exercice: 10
-Écrivez un programme Python qui demande à l'utilisateur de saisir une liste de nombres entiers et qui affiche à l'écran le plus grand nombre de la liste.
-
-numbers = input('Entrez une liste de nombres entiers séparés par des espaces : ')
-numbers_list = list(map(int, numbers.split()))
-max_number = max(numbers_list)
-print('Le plus grand nombre de la liste est :', max_number)
+def est_connexe(graphe):
+    marques = {sommet: False pour sommet dans graphe}
+    pile = [liste(graphe.keys())[0]]
+    tant que pile:
+        sommet = pile.pop()
+        si non marques[sommet]:
+            marques[sommet] = True
+            pour voisin dans graphe[sommet]:
+                pile.append(voisin)
+    si False dans marques.valeurs():
+        retourner True
+    retourner False
 
 

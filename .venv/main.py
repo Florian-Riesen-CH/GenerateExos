@@ -19,21 +19,18 @@ messageIntroduction = "Bonjour,\n\nComme annoncé lors du dernier cours.\nVoici 
 
 def requestChatGPT():
     # # Load your API key from an environment variable or secret management service
-    openai.api_key = "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"
+    openai.api_key = "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"
     print("'\033[92m'", "Send powerPoint", "'\033[0m'")
     
     response = openai.ChatCompletion.create(
         response_format={ "type": "json_object" },
         model=gptModel,
         messages=[
-            {"role": "system", "content": "You are an API who genarate python's exercises for advenced french student, the format of your answer must be JSON"},
+            {"role": "system", "content": "You are an API who genarate python's exercises for advenced french student, the format of your answer must be JSON."},
             {"role": "system", "content": "The JSON must be formated like: { \"exercises\":[ { \"number\": \"...\", \"type\": \"...\", \"difficulty\": \"...\", \"question\": \"...\", \"answer\": \"...\", }, { \"number\": \"...\", \"type\": \"...\", \"difficulty\": \"...\", \"question\": \"...\", \"answer\": \"...\", } ] }"},
-            {"role": "system", "content": "Python use indentation and not ';' to determine end of line"},
-            {"role": "system", "content": "Students only know about: -variable  -condition  -math  -function  -loop"}, 
             {"role": "system", "content": "Difficulty has to be a number from 1 to 5"},
-            {"role": "user", "content": "The file I share to you is the course material"},
-            {"role": "user", "content": "Based on that file, can you generate 4 tehorical exercises, 5 \"What print this code\" and 7 pratical exercices in french ? "},
-            {"role": "user", "content": "The question has to have at least 2 sentences"}
+            {"role": "user", "content": "Based on real life issue, can you generate 2 algorithmic problems"},
+            {"role": "user", "content": "You reponse has to be in French"},
         ], 
         n=nbSerie
     )
